@@ -19,7 +19,7 @@ func WriteError(w http.ResponseWriter, msg string, statusCode int) {
 	if statusCode == 500 {
 		trace := make([]byte, 1024)
 		runtime.Stack(trace, true)
-		log.Printf("Stacktrace:\n %s", trace)
+		log.Printf("<Stacktrace>\n%s\n<End Stacktrace>", trace)
 	}
 }
 
