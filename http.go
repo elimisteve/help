@@ -21,11 +21,20 @@ func WriteJSON(w http.ResponseWriter, structure interface{}) {
 }
 
 func ReadInto(rBody io.ReadCloser, structure interface{}) error {
-	body, err := ioutil.ReadAll(rBody)
-	defer rBody.Close()
+	body, err := ReadAndClose(rBody)
 	if err != nil {
 		return err
 	}
 
 	return json.Unmarshal(body, structure)
+}
+
+func ReadAndClose(rBody io.ReadCloser) ([]byte, error) {
+	body, err := ioutil.ReadAll(rBody)
+	defer rBody.Close()
+	if err != nil {
+		return nil, err
+	}
+
+	return body, nil
 }
