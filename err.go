@@ -35,3 +35,14 @@ type jsonError struct {
 	StatusCode int    `json:"status_code"`
 	Status     string `json:"status"`
 }
+
+func FirstError(errs ...error) error {
+	var e error
+	for i := 0; i < len(errs); i++ {
+		e = errs[i]
+		if e != nil {
+			return e
+		}
+	}
+	return nil
+}
