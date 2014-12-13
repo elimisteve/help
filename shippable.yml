@@ -7,4 +7,4 @@ go:
   - 1.3
 
 before_install:
-  - go get golang.org/x/tools/cmd/cover  # Not yet used
+  - $GOPATH/bin/go get golang.org/x/tools/cmd/cover  # Not yet used
