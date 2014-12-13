@@ -1,4 +1,3 @@
-# build image from Docker Hub (see https://registry.hub.docker.com/repos/shippableimages/)
 build_image: shippableimages/ubuntu1404_go
 
 language: go
@@ -9,7 +8,8 @@ go:
 before_install:
   - export GOPATH=$SHIPPABLE_GOPATH
   - source $HOME/.gvm/scripts/gvm
-  - gvm install go$SHIPPABLE_GO_VERSION; gvm use go$SHIPPABLE_GO_VERSION
+  - gvm install go$SHIPPABLE_GO_VERSION
+  - gvm use go$SHIPPABLE_GO_VERSION
   - go get golang.org/x/tools/cmd/cover  # Not yet used
 
 install:
